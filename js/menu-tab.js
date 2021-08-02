@@ -1,23 +1,24 @@
-var item = $('.menu-item');
-var tab = $('.tab');
-var section = $('.notice, .pds');
-var list = $('.board li');
+$( document ).ready(function() {
+  // DOM 선택 후 변수에 할당
+  var menuItems= $('.menu-item');
+  var boardTabs = $('.board-tab');
+  var boardTabPanels = $('.board-tab-panel');
 
-// 메인 메뉴 제어를 위한 함수
-item.on('mouseover focusin', function(){
-  item.removeClass('menu-act')
-  $(this).addClass('menu-act');
-});
-// 탭 요소에 키보드 포커그를 받을 수 있도록 tabindex 속성 추가하기
-tab.attr('tabindex', '0');
-// 탭 목록에 아이콘을 일괄 추가하기
-list.find('a').attr('class', 'icon-dot-circled');
+  // 클릭 시 메인 메뉴 제어
+  menuItems.on('click', function(){
+    menuItems.removeClass('is-active')
+    $(this).addClass('is-active');
+  });
 
-// 탭 클릭 시 tab-act 클래스를 부모 요소에 추가하기
-tab.on('click keyup', function(e){
-  e.preventDefault();
-  if(e.keyCode === 13 || e.type === 'click'){
-    section.removeClass('tab-act');
-    $(this).parent().addClass('tab-act');
-  }
+  // 탭 요소에 키보드 포커스를 받을 수 있도록 동적으로 tabindex 속성 추가
+  boardTabs.attr('tabindex', '0');
+
+  // 탭 클릭이나 엔터 및 스페이스 키를 눌렀을 때 제어
+  boardTabs.on('click keyup', function(e){
+    e.preventDefault();
+    if(e.keyCode === 13 || e.type === 'click'){
+      boardTabPanels.removeClass('is-select');
+      $(this).parent().addClass('is-select');
+    }
+  });
 });
