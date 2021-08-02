@@ -35,6 +35,33 @@ body {
   clip: rect(0 0 0 0);
   clip-path: polygon(0 0, 0 0, 0 0);
 }
+/* 건너뛰기(바로가기) 링크 */
+.skip-navigation{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  z-index: 10;
+}
+.skip-navigation a{
+  display: inline-block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.skip-navigation a:focus{
+  position: static;
+  width: auto;
+  height: auto;
+  clip: initial;
+  padding: 5px;
+  margin: 10px;
+}
 /* 웹카페 레이아웃 */
 .container {
   background: url("images/bg_flower.png") no-repeat 50% 0, linear-gradient(to bottom, #ccc, #eee 45%, #fff 70%, #fff 100%) repeat;
